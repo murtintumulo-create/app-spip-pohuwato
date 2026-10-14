@@ -1,13 +1,16 @@
+```json
 {
-  "name": "spip-pohuwato-local",
+  "name": "spip-dikbud-pohuwato",
   "version": "1.0.0",
-  "description": "Aplikasi Pengelolaan Risiko SPIP Perbup Pohuwato No. 15 Tahun 2025",
+  "description": "Aplikasi Pengelolaan Risiko SPIP Dikbud Pohuwato Perbup No. 15 Tahun 2025",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "npm rebuild sqlite3"
   },
   "dependencies": {
     "express": "^4.18.2",
     "sqlite3": "^5.1.6"
   }
 }
+```
