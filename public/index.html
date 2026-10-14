@@ -1,0 +1,415 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPIP & Pengelolaan Risiko - Seluruh Form Perbup Pohuwato No. 15/2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800">
+
+    <!-- Header Navbar -->
+    <nav class="bg-blue-900 text-white p-4 shadow-lg print:hidden">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-white text-blue-900 p-2 rounded-full font-bold text-lg">🎓</div>
+                <div>
+                    <h1 class="text-lg font-bold">Aplikasi SPIP Dikbud Pohuwato</h1>
+                    <p class="text-xs text-blue-200">Dinas Pendidikan dan Kebudayaan Kab. Pohuwato | Perbup No. 15 Tahun 2025</p>
+                </div>
+            </div>
+            <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded text-xs font-bold shadow">
+                🖨️ Cetak Seluruh Form / Laporan (PDF)
+            </button>
+        </div>
+    </nav>
+
+    <!-- Navigation Tabs (Form 1 s.d. Form 12) -->
+    <div class="bg-white border-b shadow-sm print:hidden">
+        <div class="container mx-auto flex overflow-x-auto text-xs font-bold text-gray-600">
+            <button onclick="switchTab('tab-cee')" id="btn-tab-cee" class="py-3 px-4 border-b-2 border-blue-900 text-blue-900 font-bold whitespace-nowrap">
+                Form 1-2: CEE & Lingkungan
+            </button>
+            <button onclick="switchTab('tab-konteks')" id="btn-tab-konteks" class="py-3 px-4 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">
+                Form 3-5: Konteks Risiko
+            </button>
+            <button onclick="switchTab('tab-identifikasi')" id="btn-tab-identifikasi" class="py-3 px-4 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">
+                Form 6-8: Identifikasi Risiko
+            </button>
+            <button onclick="switchTab('tab-analisis')" id="btn-tab-analisis" class="py-3 px-4 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">
+                Form 9-10: Analisis & Prioritas
+            </button>
+            <button onclick="switchTab('tab-rtp')" id="btn-tab-rtp" class="py-3 px-4 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">
+                Form 11-12: RTP & Mitigasi
+            </button>
+        </div>
+    </div>
+
+    <div class="container mx-auto mt-6 p-4">
+
+        <!-- TAB 1: FORM 1 & FORM 2 -->
+        <div id="tab-cee" class="tab-content">
+            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-md font-bold text-blue-900 border-b pb-2 mb-4">
+                    📋 FORM 1: Kuesioner Evaluasi Lingkungan Pengendalian (CEE)
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs border-collapse border border-slate-300">
+                        <thead class="bg-slate-100 font-bold text-center">
+                            <tr>
+                                <th class="p-2 border">No</th>
+                                <th class="p-2 border">Sub-Unsur Lingkungan Pengendalian</th>
+                                <th class="p-2 border">Pertanyaan / Kuesioner Evaluasi</th>
+                                <th class="p-2 border">Modus Score</th>
+                                <th class="p-2 border">Kesimpulan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="p-2 border text-center">A</td>
+                                <td class="p-2 border font-bold">Penegakan Integritas & Nilai Etika</td>
+                                <td class="p-2 border">Pemberian pesan moral/integritas berkala oleh Kadis & aturan perilaku pegawai Dikbud</td>
+                                <td class="p-2 border text-center font-bold">3</td>
+                                <td class="p-2 border text-center font-bold text-emerald-700 bg-emerald-50">Memadai</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-2 border text-center">B</td>
+                                <td class="p-2 border font-bold">Komitmen Terhadap Kompetensi</td>
+                                <td class="p-2 border">Standar kompetensi Jabatan Fungsional Guru/Pengawas dan Diklat Pengelola Keuangan</td>
+                                <td class="p-2 border text-center font-bold">2</td>
+                                <td class="p-2 border text-center font-bold text-amber-700 bg-amber-50">Kurang Memadai</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-2 border text-center">C</td>
+                                <td class="p-2 border font-bold">Kepemimpinan yang Kondusif</td>
+                                <td class="p-2 border">Kebijakan pengelolaan risiko DAK/BOSP dan kepemimpinan responsif pimpinan</td>
+                                <td class="p-2 border text-center font-bold">3</td>
+                                <td class="p-2 border text-center font-bold text-emerald-700 bg-emerald-50">Memadai</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-2 border text-center">D</td>
+                                <td class="p-2 border font-bold">Pembinaan Sumber Daya Manusia</td>
+                                <td class="p-2 border">Pemerataan distribusi guru di wilayah terpencil & anggaran diklat berkelanjutan</td>
+                                <td class="p-2 border text-center font-bold">2</td>
+                                <td class="p-2 border text-center font-bold text-amber-700 bg-amber-50">Kurang Memadai</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-md font-bold text-blue-900 border-b pb-2 mb-4">
+                    📂 FORM 2: Kondisi Kerentanan Lingkungan Pengendalian Berdasarkan Dokumen
+                </h2>
+                <table class="w-full text-xs border-collapse border border-slate-300">
+                    <thead class="bg-slate-100 font-bold text-center">
+                        <tr>
+                            <th class="p-2 border">No</th>
+                            <th class="p-2 border">Sumber Data</th>
+                            <th class="p-2 border">Uraian Kelemahan / Permasalahan</th>
+                            <th class="p-2 border">Klasifikasi Sub-Unsur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="p-2 border text-center">1</td>
+                            <td class="p-2 border">LHP BPK / Inspektorat 2025</td>
+                            <td class="p-2 border">Sisa modal DAK/BOSP belum terserap 100% dan temuan pajak SPJ sekolah</td>
+                            <td class="p-2 border">Komitmen terhadap Kompetensi</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-2 border text-center">2</td>
+                            <td class="p-2 border">Data Analisis Kebutuhan Guru (ABK)</td>
+                            <td class="p-2 border">Terjadi penumpukan guru PNS di sekolah perkotaan dan kekurangan di pelosok</td>
+                            <td class="p-2 border">Pembinaan Sumber Daya Manusia</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 2: FORM 3, 4, 5 -->
+        <div id="tab-konteks" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-md font-bold text-blue-900 border-b pb-2 mb-4">
+                    🎯 FORM 3 & 4: Penetapan Konteks Risiko Strategis OPD (Renstra 2025-2029)
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-6">
+                    <div class="bg-slate-50 p-4 rounded border">
+                        <p class="font-bold text-blue-900 mb-1">Tujuan Strategis Renstra Dikbud:</p>
+                        <p>Meningkatnya intelektualitas dan karakter anak usia sekolah serta terwujudnya kebudayaan maju</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded border">
+                        <p class="font-bold text-blue-900 mb-1">Sasaran Strategis OPD:</p>
+                        <ol class="list-decimal list-inside">
+                            <li>Meningkatnya Intelektualitas dan karakter anak usia sekolah</li>
+                            <li>Terwujudnya berkebudayaan maju</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3 class="text-xs font-bold text-slate-700 mb-2">📊 Indikator Kinerja Utama (IKU) Renstra Dikbud Pohuwato (TA 2026)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs border-collapse border border-slate-300">
+                        <thead class="bg-slate-100 font-bold text-center">
+                            <tr>
+                                <th class="p-2 border">No</th>
+                                <th class="p-2 border">Indikator Kinerja Utama (IKU)</th>
+                                <th class="p-2 border">Target 2026</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b"><td class="p-2 border text-center">1</td><td class="p-2 border">Rata-rata Lama Sekolah</td><td class="p-2 border text-center font-bold">7.94</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">2</td><td class="p-2 border">Harapan Lama Sekolah</td><td class="p-2 border text-center font-bold">12.71</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">3</td><td class="p-2 border">Indeks Pembangunan Kebudayaan</td><td class="p-2 border text-center font-bold">100.00</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">4</td><td class="p-2 border">Capaian SPM Pendidikan</td><td class="p-2 border text-center font-bold">75.00</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">5</td><td class="p-2 border">Angka Anak Tidak Sekolah (ATS)</td><td class="p-2 border text-center font-bold">6.93</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">6</td><td class="p-2 border">Persentase Siswa Miskin Penerima Bantuan Seragam dan Perlengkapan Sekolah</td><td class="p-2 border text-center font-bold">10.00</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">7</td><td class="p-2 border">Persentase Capaian Literasi</td><td class="p-2 border text-center font-bold">61.82</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">8</td><td class="p-2 border">Persentase Capaian Numerasi</td><td class="p-2 border text-center font-bold">57.24</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">9</td><td class="p-2 border">Angka Kesiapan sekolah</td><td class="p-2 border text-center font-bold">80.00</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">10</td><td class="p-2 border">Indeks Fasilitas Satuan Pendidikan</td><td class="p-2 border text-center font-bold">74.00</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">11</td><td class="p-2 border">Proporsi Peningkatan Fasilitas Kebudayaan</td><td class="p-2 border text-center font-bold">5.00</td></tr>
+                            <tr class="border-b"><td class="p-2 border text-center">12</td><td class="p-2 border">Persentase Peningkatan Partisipasi Masyarakat</td><td class="p-2 border text-center font-bold">5.00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+                <h2 class="text-md font-bold text-blue-900 border-b pb-2 mb-4">
+                    ⚙️ FORM 5: Penetapan Konteks Risiko Operasional (22 Sub-Kegiatan DPA TA 2026)
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs border-collapse border border-slate-300">
+                        <thead class="bg-slate-100 font-bold text-center">
+                            <tr>
+                                <th class="p-2 border">No</th>
+                                <th class="p-2 border">Sub-Kegiatan DPA 2026</th>
+                                <th class="p-2 border">Kode Risiko</th>
+                                <th class="p-2 border">Pemilik Risiko</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-konteks-body">
+                            <!-- Data dimuat dari API -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: FORM 6, 7, 8 -->
+        <div id="tab-identifikasi" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-md font-bold text-blue-900 border-b pb-2 mb-4">
+                    📝 FORM 7 & 8: Identifikasi Risiko Operasional Dikbud Pohuwato
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs border-collapse border border-slate-300">
+                        <thead class="bg-slate-100 font-bold text-center">
+                            <tr>
+                                <th class="p-2 border">No</th>
+                                <th class="p-2 border">Kode Risiko</th>
+                                <th class="p-2 border">Pernyataan Peristiwa Risiko</th>
+                                <th class="p-2 border">Akar Penyebab Utama</th>
+                                <th class="p-2 border">Sifat</th>
+                                <th class="p-2 border">Dampak Terhadap Kinerja</th>
+                                <th class="p-2 border">Pemilik Risiko</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-identifikasi-body">
+                            <!-- Data dimuat dari API -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: FORM 9 & FORM 10 -->
+        <div id="tab-analisis" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-md font-bold text-blue-900 border-b pb-2 mb-4">
+                    📊 FORM 9: Hasil Analisis Scoring Risiko (Dampak x Kemungkinan)
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs border-collapse border border-slate-300">
+                        <thead class="bg-slate-100 font-bold text-center">
+                            <tr>
+                                <th class="p-2 border">No</th>
+                                <th class="p-2 border">Kode Risiko</th>
+                                <th class="p-2 border">Risiko Teridentifikasi</th>
+                                <th class="p-2 border">Dampak (d)</th>
+                                <th class="p-2 border">Kemungkinan (e)</th>
+                                <th class="p-2 border">Skor (d x e)</th>
+                                <th class="p-2 border">Level Kategori</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-analisis-body">
+                            <!-- Data dimuat dari API -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-md font-bold text-red-700 border-b pb-2 mb-4">
+                    🔥 FORM 10: Daftar Risiko Prioritas OPD (Area Merah & Oranye)
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs border-collapse border border-slate-300">
+                        <thead class="bg-red-50 text-red-900 font-bold text-center">
+                            <tr>
+                                <th class="p-2 border">No</th>
+                                <th class="p-2 border">Kode</th>
+                                <th class="p-2 border">Risiko Prioritas</th>
+                                <th class="p-2 border">Skor</th>
+                                <th class="p-2 border">Pemilik Risiko</th>
+                                <th class="p-2 border">Penyebab Utama</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-prioritas-body">
+                            <!-- Data dimuat dari API -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: FORM 11 & FORM 12 -->
+        <div id="tab-rtp" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h2 class="text-md font-bold text-blue-900 border-b pb-2 mb-4">
+                    🛠️ FORM 11 & 12: Penilaian Pengendalian yang Ada & Rencana Tindak Pengendalian (RTP)
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs border-collapse border border-slate-300">
+                        <thead class="bg-slate-100 font-bold text-center">
+                            <tr>
+                                <th class="p-2 border">No</th>
+                                <th class="p-2 border">Kode</th>
+                                <th class="p-2 border">Risiko Prioritas</th>
+                                <th class="p-2 border">Pengendalian yang Ada</th>
+                                <th class="p-2 border">Celah Pengendalian</th>
+                                <th class="p-2 border">Rencana Tindak Pengendalian (RTP)</th>
+                                <th class="p-2 border">Penanggung Jawab</th>
+                                <th class="p-2 border">Target Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-rtp-body">
+                            <!-- Data dimuat dari API -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS Switch Tab & Fetch Data -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+
+            document.querySelectorAll('.container button').forEach(btn => {
+                btn.classList.remove('border-blue-900', 'text-blue-900');
+                btn.classList.add('border-transparent');
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAllForms);
+
+        async function loadAllForms() {
+            const res = await fetch('/api/risks');
+            const data = await res.json();
+
+            const tbodyKonteks = document.getElementById('table-konteks-body');
+            const tbodyIdent = document.getElementById('table-identifikasi-body');
+            const tbodyAnalisis = document.getElementById('table-analisis-body');
+            const tbodyPrioritas = document.getElementById('table-prioritas-body');
+            const tbodyRtp = document.getElementById('table-rtp-body');
+
+            if(tbodyKonteks) tbodyKonteks.innerHTML = '';
+            tbodyIdent.innerHTML = '';
+            tbodyAnalisis.innerHTML = '';
+            tbodyPrioritas.innerHTML = '';
+            tbodyRtp.innerHTML = '';
+
+            let idxPrio = 1;
+
+            data.forEach((item, index) => {
+                if(tbodyKonteks) {
+                    tbodyKonteks.innerHTML += `
+                        <tr class="border-b hover:bg-slate-50">
+                            <td class="p-2 border text-center">${index + 1}</td>
+                            <td class="p-2 border font-semibold">${item.kegiatan || '-'}</td>
+                            <td class="p-2 border font-bold text-blue-700">${item.kode_risiko}</td>
+                            <td class="p-2 border">${item.bidang || item.pemilik_risiko}</td>
+                        </tr>
+                    `;
+                }
+
+                tbodyIdent.innerHTML += `
+                    <tr class="border-b hover:bg-slate-50">
+                        <td class="p-2 border text-center">${index + 1}</td>
+                        <td class="p-2 border font-bold text-blue-700">${item.kode_risiko}</td>
+                        <td class="p-2 border">${item.uraian_risiko}</td>
+                        <td class="p-2 border">${item.sebab || '-'}</td>
+                        <td class="p-2 border text-center font-bold">${item.sifat_sebab || 'C'}</td>
+                        <td class="p-2 border">${item.dampak || '-'}</td>
+                        <td class="p-2 border">${item.bidang || item.pemilik_risiko}</td>
+                    </tr>
+                `;
+
+                let badgeClass = 'bg-slate-200 text-slate-800';
+                if (item.tingkat_risiko.includes('EKSTRIM') || item.tingkat_risiko.includes('SANGAT TINGGI')) badgeClass = 'bg-red-600 text-white font-bold';
+                else if (item.tingkat_risiko.includes('TINGGI')) badgeClass = 'bg-orange-500 text-white font-bold';
+                else if (item.tingkat_risiko.includes('SEDANG')) badgeClass = 'bg-amber-400 text-black';
+                else badgeClass = 'bg-emerald-500 text-white';
+
+                tbodyAnalisis.innerHTML += `
+                    <tr class="border-b hover:bg-slate-50">
+                        <td class="p-2 border text-center">${index + 1}</td>
+                        <td class="p-2 border font-bold text-blue-700">${item.kode_risiko}</td>
+                        <td class="p-2 border">${item.uraian_risiko}</td>
+                        <td class="p-2 border text-center">${item.skala_dampak}</td>
+                        <td class="p-2 border text-center">${item.skala_kemungkinan}</td>
+                        <td class="p-2 border text-center font-bold">${item.skala_risiko}</td>
+                        <td class="p-2 border text-center"><span class="px-2 py-1 rounded text-xs ${badgeClass}">${item.tingkat_risiko}</span></td>
+                    </tr>
+                `;
+
+                if (item.is_prioritas === 1 || item.skala_risiko >= 12) {
+                    tbodyPrioritas.innerHTML += `
+                        <tr class="border-b hover:bg-red-50">
+                            <td class="p-2 border text-center">${idxPrio++}</td>
+                            <td class="p-2 border font-bold text-blue-700">${item.kode_risiko}</td>
+                            <td class="p-2 border font-semibold">${item.uraian_risiko}</td>
+                            <td class="p-2 border text-center font-bold text-red-600">${item.skala_risiko}</td>
+                            <td class="p-2 border">${item.pemilik_risiko}</td>
+                            <td class="p-2 border">${item.sebab}</td>
+                        </tr>
+                    `;
+
+                    tbodyRtp.innerHTML += `
+                        <tr class="border-b hover:bg-slate-50">
+                            <td class="p-2 border text-center">${idxPrio - 1}</td>
+                            <td class="p-2 border font-bold text-blue-700">${item.kode_risiko}</td>
+                            <td class="p-2 border font-semibold">${item.uraian_risiko}</td>
+                            <td class="p-2 border">${item.pengendalian_ada || '-'}</td>
+                            <td class="p-2 border text-red-600">${item.celah_pengendalian || '-'}</td>
+                            <td class="p-2 border font-bold text-blue-900 bg-blue-50">${item.pengendalian_dibutuhkan || '-'}</td>
+                            <td class="p-2 border">${item.penanggung_jawab || item.pemilik_risiko}</td>
+                            <td class="p-2 border text-center font-semibold">${item.target_waktu || '2026'}</td>
+                        </tr>
+                    `;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+```

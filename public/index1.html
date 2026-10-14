@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPIP Dikbud Pohuwato - Preview & Download Excel Form 10, 11, 12</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Library SheetJS untuk membaca dan mengunduh Excel di Browser -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800">
+
+    <!-- Header Navbar -->
+    <nav class="bg-blue-900 text-white p-4 shadow-lg print:hidden">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-white text-blue-900 p-2 rounded-full font-bold text-lg">📊</div>
+                <div>
+                    <h1 class="text-lg font-bold">Aplikasi SPIP Dikbud Pohuwato</h1>
+                    <p class="text-xs text-blue-200">Pratinjau & Unduh Form 10, 11, 12 Sesuai Perbup No. 15 Tahun 2025</p>
+                </div>
+            </div>
+            
+            <!-- Tombol Download Excel -->
+            <button onclick="downloadExcelLangsung()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded text-xs font-bold shadow flex items-center gap-2">
+                📥 Unduh Berkas Excel (.xlsx)
+            </button>
+        </div>
+    </nav>
+
+    <!-- Navigasi Tab Browser -->
+    <div class="bg-white border-b shadow-sm print:hidden">
+        <div class="container mx-auto flex overflow-x-auto text-xs font-bold text-gray-600">
+            <button onclick="switchSheet('Form 10 Risiko Prioritas')" id="btn-f10" class="py-3 px-4 border-b-2 border-blue-900 text-blue-900 font-bold whitespace-nowrap">
+                Form 10: Risiko Prioritas
+            </button>
+            <button onclick="switchSheet('Form 11 RTP Lingkungan CEE')" id="btn-f11" class="py-3 px-4 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">
+                Form 11: RTP Lingkungan CEE
+            </button>
+            <button onclick="switchSheet('Form 12 RTP Pengendalian')" id="btn-f12" class="py-3 px-4 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">
+                Form 12: RTP Kegiatan Pengendalian
+            </button>
+        </div>
+    </div>
+
+    <!-- Kontainer Tampilan Pratinjau Tabel Excel -->
+    <div class="container mx-auto mt-6 p-4">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h2 id="sheet-title" class="text-md font-bold text-blue-900">PRATINJAU TAMPILAN FORM EXCEL</h2>
+                <span class="text-xs text-gray-500 bg-slate-100 px-3 py-1 rounded">Format Sesuai Lampiran Perbup Pohuwato</span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <div id="excel-preview-container" class="text-xs">
+                    <p class="text-gray-400 italic text-center py-8">Memuat data tabel dari Excel...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript untuk Read & Download Excel -->
+    <script>
+        // Data Struktur Form 10, 11, dan 12
+        const dataForm10 = [
+            ["No", "Risiko Prioritas", "Kode Risiko", "Skor Risiko", "Pemilik Risiko", "Penyebab Utama", "Dampak Utama"],
+            [1, "BOS SD: Belanja modal Rp 5,19 M & salur BOSP lambat", "RSK-DPA-DIKDAS-002", 20, "Kabid Pembinaan Dikdas", "Pengesahan RKAS ARKAS lambat, SPJ menumpuk", "Operasional 129 SD terganggu, pemblokiran rekening"],
+            [2, "BOS SMP: Belanja modal Rp 1,77 M & pajak SPJ", "RSK-DPA-DIKDAS-003", 16, "Kabid Pembinaan Dikdas", "Kapasitas operator ARKAS rendah, aset lambat rekon", "Pengadaan sarana terhambat, temuan BPK"],
+            [3, "BOP PAUD: Salur terhambat kendala rekening lembaga", "RSK-DPA-PAUD-004", 16, "Kabid PAUD & Dikmas", "Administrasi paruh waktu, Dapodik lambat", "KBM PAUD mandek, honor pendidik tertunda"],
+            [4, "Pemetaan Guru: Data ABK tidak akurat & penolakan mutasi", "RSK-DPA-GTK-014", 16, "Kabid Ketenagaan (GTK)", "Sinkronisasi Dapodik lambat, resistensi guru", "Disparitas guru daerah terpencil tetap tinggi"],
+            [5, "SAKIP & Renja: Pagu Rp 0 penyusunan LAKIP terhambat", "RSK-DPA-ZERO-021", 16, "Sekretaris Dinas", "Fiskal APBD dialihkan ke belanja wajib gaji", "LAKIP & Renja terhambat, nilai RB turun"],
+            [6, "Cagar Budaya: Pagu Rp 0 pendaftaran ODCB stagnan", "RSK-DPA-ZERO-022", 16, "Kabid Kebudayaan", "Pagu kebudayaan terserap penuh festival budaya", "Target penetapan cagar budaya stagnan 0"],
+            [7, "Gaji ASN: Pembayaran gaji pegawai Rp 213,4 M", "RSK-DPA-SEKR-001", 15, "Sekretaris Dinas", "SIMGAJI/BPKAD terlambat rekon mutasi pensiun", "Keresahan ribuan guru/pegawai, demotivasi"]
+        ];
+
+        const dataForm11 = [
+            ["No", "Kondisi Lingkungan Pengendalian Kurang Memadai", "Rencana Tindak Perbaikan Lingkungan Pengendalian", "Penanggung Jawab", "Target Waktu Penyelesaian"],
+            ["I", "KOMITMEN TERHADAP KOMPETENSI", "", "", ""],
+            [1, "Kapasitas dan pemahaman operator sekolah terkait pengelolaan keuangan BOSP dan pajak SPJ masih rendah", "Penyelenggaraan Bimbingan Teknis dan pendampingan e-purchasing SIPLah serta perpajakan SPJ bagi bendahara sekolah", "Tim BOS Dikbud & Kasubag Keuangan", "Triwulan I & II 2026"],
+            ["II", "PEMBINAAN SUMBER DAYA MANUSIA (SDM)", "", "", ""],
+            [2, "Pemerataan dan redistribusi guru PNS di wilayah terpencil belum berbasis data spasial yang akurat", "Penyusunan Perbup Pedoman Redistribusi Guru & Integrasi Peta Zonasi Guru berbasis Analisis Beban Kerja (ABK)", "Kabid Ketenagaan (GTK) & BKPSDM", "Triwulan II 2026"],
+            ["III", "KEPEMIMPINAN YANG KONDUSIF", "", "", ""],
+            [3, "Nihil alokasi anggaran operasional penyusunan dokumen LAKIP dan pendaftaran Cagar Budaya", "Pengembangan aplikasi e-SAKIP mandiri Dikbud dan kemitraan swakelola riset cagar budaya bersama Balai BPK", "Sekretaris Dinas & Kabid Kebudayaan", "Triwulan I - IV 2026"]
+        ];
+
+        const dataForm12 = [
+            ["No", "Risiko Prioritas", "Kode Risiko", "Pengendalian yang Sudah Ada", "Celah Pengendalian (Alasan Tidak Efektif)", "Rencana Tindak Pengendalian (RTP)", "Penanggung Jawab", "Target Waktu"],
+            [1, "BOS SD (Pagu Rp 14,9 M)", "RSK-DPA-DIKDAS-002", "Monitoring ARKAS berkala", "Belum ada klinik asistensi meja", "Klinik Asistensi ARKAS BOSP & cut-off H-14 batas salur", "Kabid Dikdas & Tim BOS", "Feb - Okt 2026"],
+            [2, "BOS SMP (Pagu Rp 5,83 M)", "RSK-DPA-DIKDAS-003", "Verifikasi berkas manual", "Verifikasi SIPLah & aset lambat", "Pendampingan e-purchasing SIPLah & rekon aset triwulanan", "PPTK SMP & Pengurus Barang", "Mar - Nov 2026"],
+            [3, "BOP PAUD (Pagu Rp 4,00 M)", "RSK-DPA-PAUD-004", "Surat edaran batas waktu", "Surat edaran sering diabaikan", "Pemberdayaan PKG sebagai simpul verifikasi berjenjang", "Kabid PAUD & Kasi Lembaga", "Apr - Okt 2026"],
+            [4, "Pemetaan GTK (Rp 27,7 Jt)", "RSK-DPA-GTK-014", "Pengecekan di Dapodik", "Dapodik belum link peta zonasi", "Rekonsiliasi data guru berbasis spasial & Perbup Zonasi", "Kabid Ketenagaan (GTK)", "Mei - Okt 2026"],
+            [5, "SAKIP Dikbud (Pagu Rp 0)", "RSK-DPA-ZERO-021", "Rapat LAKIP tahunan ad-hoc", "Tidak ada anggaran operasional", "Pemanfaatan sistem digital e-SAKIP mandiri perangkat daerah", "Sekretaris & Kasubag Ren", "Triwulan I - IV 2026"]
+        ];
+
+        let currentSheet = 'Form 10 Risiko Prioritas';
+
+        // Fungsi Menampilkan Tabel di Browser
+        function renderTable(dataArray) {
+            let html = '<table class="w-full border-collapse border border-slate-300">';
+            dataArray.forEach((row, rIdx) => {
+                html += '<tr class="' + (rIdx === 0 ? 'bg-blue-900 text-white font-bold text-center' : 'border-b hover:bg-slate-50') + '">';
+                row.forEach((cell) => {
+                    if (rIdx === 0) {
+                        html += `<th class="p-2 border">${cell}</th>`;
+                    } else {
+                        html += `<td class="p-2 border">${cell}</td>`;
+                    }
+                });
+                html += '</tr>';
+            });
+            html += '</table>';
+            document.getElementById('excel-preview-container').innerHTML = html;
+        }
+
+        // Fungsi Ganti Tab Pratinjau
+        function switchSheet(sheetName) {
+            currentSheet = sheetName;
+            document.getElementById('sheet-title').innerText = sheetName.toUpperCase();
+
+            if (sheetName === 'Form 10 Risiko Prioritas') renderTable(dataForm10);
+            else if (sheetName === 'Form 11 RTP Lingkungan CEE') renderTable(dataForm11);
+            else if (sheetName === 'Form 12 RTP Pengendalian') renderTable(dataForm12);
+        }
+
+        // Fungsi Download Otomatis File Excel (.xlsx) dari Browser
+        function downloadExcelLangsung() {
+            const wb = XLSX.utils.book_new();
+
+            const ws10 = XLSX.utils.aoa_to_sheet(dataForm10);
+            const ws11 = XLSX.utils.aoa_to_sheet(dataForm11);
+            const ws12 = XLSX.utils.aoa_to_sheet(dataForm12);
+
+            XLSX.utils.book_append_sheet(wb, ws10, "Form 10 Risiko Prioritas");
+            XLSX.utils.book_append_sheet(wb, ws11, "Form 11 RTP Lingkungan CEE");
+            XLSX.utils.book_append_sheet(wb, ws12, "Form 12 RTP Pengendalian");
+
+            XLSX.writeFile(wb, "Form_10_11_12_Perbup_Pohuwato_DIKBUD_2026.xlsx");
+        }
+
+        // Muat Sheet Pertama saat Halaman Ditinggalkan
+        document.addEventListener('DOMContentLoaded', () => {
+            switchSheet('Form 10 Risiko Prioritas');
+        });
+    </script>
+</body>
+</html>

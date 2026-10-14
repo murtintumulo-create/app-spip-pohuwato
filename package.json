@@ -1,0 +1,13 @@
+{
+  "name": "spip-pohuwato-local",
+  "version": "1.0.0",
+  "description": "Aplikasi Pengelolaan Risiko SPIP Perbup Pohuwato No. 15 Tahun 2025",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
+  }
+}
