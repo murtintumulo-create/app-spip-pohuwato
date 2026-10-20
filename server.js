@@ -1,4 +1,3 @@
-javascript
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
@@ -93,7 +92,7 @@ function seedData() {
         ('Penyaluran dan LPJ Dana BOSP SD/SMP', 'Monitoring dan Evaluasi Lapangan', 'Kabid Dikdas & Tim BOS', 'Triwulanan', 'Mar, Jun, Sep, Des 2026', 'Capaian salur 100%')`);
 }
 
-// Endpoint /api/risks
+// Endpoint API
 app.get('/api/risks', (req, res) => {
     const query = `
         SELECT r.*, k.bidang, k.tujuan, k.sasaran, k.kegiatan, 
