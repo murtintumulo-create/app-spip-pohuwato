@@ -3,6 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 const app = express();
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -10,11 +11,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Inisialisasi Database SQLite
 const db = new sqlite3.Database('./spip_dikbud_pohuwato.db', (err) => {
-    if (err) console.error('Gagal koneksi database:', err.message);
-    else console.log('Database SPIP Dikbud Pohuwato terhubung.');
+    if (err) {
+        console.error('Gagal koneksi database:', err.message);
+    } else {
+        console.log('Database SPIP Dikbud Pohuwato terhubung.');
+    }
 });
 
-// Pembuatan Tabel (Pastikan Query SQL Dibungkus Backtick `...`)
+// Pembuatan Tabel SQLite
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS konteks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -60,6 +64,7 @@ db.serialize(() => {
 app.get('/api/risks', (req, res) => {
     const query = `
         SELECT r.*, k.bidang, k.tujuan, k.sasaran, k.kegiatan, 
+               rtp.pengendalian_ada, rtp.celah_pengendalian,
                rtp.pengendalian_dibutuhkan, rtp.penanggung_jawab, rtp.target_waktu
         FROM risk_register r
         LEFT JOIN konteks k ON r.konteks_id = k.id
@@ -67,11 +72,14 @@ app.get('/api/risks', (req, res) => {
         ORDER BY r.skala_risiko DESC
     `;
     db.all(query, [], (err, rows) => {
-        if (err) return res.status(500).json({ error: err.message });
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
         res.json(rows);
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server SPIP Dikbud Pohuwato berjalan di: http://localhost:${PORT}`);
+// Bind ke 0.0.0.0 khusus deployment di Render
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server SPIP Dikbud Pohuwato berjalan di port: ${PORT}`);
 });
